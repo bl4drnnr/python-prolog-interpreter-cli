@@ -8,7 +8,7 @@
 
 # Python PROLOG Interpreter Library
 
-**PPI** - is a simple Python witten library, that will allow you to use PROLOG syntax
+**PPIL** - is a simple Python witten library, that will allow you to use PROLOG syntax
 within your Python code and operate on it. 
 
 ## Introduction
