@@ -1,7 +1,10 @@
 # Table of Contents
 
 1. [Python PROLOG Interpreter Library](#python-prolog-interpreter-library)
-2. [Introduction](#introduction)
+2. [Introduction to PROLOG](#introduction-to-prolog)
+   1. [Facts](#facts)
+   2. [Rules](#rules)
+   3. [Requests](#requests)
 3. [Installation and Usage](#installation-and-usage)
 4. [References and Contact](#references-and-contact)
 5. [License](#license)
@@ -11,28 +14,109 @@
 **PPIL** - is a simple Python witten library, that will allow you to use PROLOG syntax
 within your Python code and operate on it. 
 
-## Introduction
+## Introduction to PROLOG
 
 **Prolog** - is logical programming language that works on **binary boolean logic**. It means
 that every statement in Prolog can be either **false** or **true**.
 
 There are 3 whales **Prolog** stands on:
-- **Facts** - facts describe objects and relations between them. 
-    In order to do that, we use _predicates_ (_relations_) and _arguments_ (_objects_).
-    ```
-    predicate(arguments)
-    ```
-    This is very similar to how we describe functions in other programming languages.
-    Using **_facts_**, we can build **_Knowledge Databases_**, that will be the main base of items to operate on.
+
+### Facts
+
+- **Facts** - facts describe objects and relations between them. In order to do that, we use _predicates_ (_relations_) and _arguments_ (_objects_).
+```
+predicate(arguments)
+```
+This is very similar to how we describe functions in other programming languages.
+Using **_facts_**, we can build **_Knowledge Databases_**, that will be the main base of items to operate on.
+
+Here is simple example of what predicates are, and how they work:
+```
+loves(james, books).
+```
+Above was described the simples example of what predicate is. **Pay attention, that everything was written in lowercase.**
+**This is very important, because uppercase in Prolog means other things.** We will talk about it later.
+    
+Basically, this statement tell us that _James loves books._ And by using **requests** we can check it. Also, pay
+attention, that using PROLOG CLI in order to call predicate, use need to use period at the end.
+
+```
+? - loves(james, books).
+true.
+```
+
+But, if we change something in this statement, name _James_ on other name, of _books_ on something else,
+keeping in mind, that in this case out **_Knowledge Databases_** is only one fact, we will get `false`.
+
+```
+? - loves(james, fishing).
+false.
+```
+
+Now, let's discuss, how variables work in PROLOG. First of all, what you should know, is that they are case-sensitive.
+Basically, as it was mentioned above, variables are written in uppercase. Let's break down next Knowledge Databases:
+
+```
+eat(james, apples)
+eat(ann, pie)
+eat(janny, apples)
+```
+
+It's simple Knowledge Databases of what 3 persons eat. Now, using variables, we can ask PROLOG, about who eat apples.
+In order to do that, we need to replace records we want to find with upper-case variables. Here is an example:
+
+```
+? - eat(X, apples).
+X = james
+X = janny
+```
+
+As a result, we can see, that there are 2 persons who eat apples, _James_ and _Janny_.
+
+In conclusion, we can say, that **Rules** are basic and fundamental part of `PROLOG` programming languages.
+They are used in order to build **_Knowledge Databases_** - facts, describing objects and relations between them.
+Facts can be either without arguments or with any quantity of arguments. Expect checking facts on what is `true` or `false`
+we can, using uppercase variables, list what records are `true`.
+
+### Rules
 - **Rules** - conditional statements about the existence of dependencies between objects. Here is how rules are described:
-  ```
-  name_of_rule(arguments) if
-                other_rule(arguments) and
-                other_rule(arguments) and
-                ...
-                predicate(arguments).
-  ```
+```
+name_of_rule(arguments) if
+            other_rule(arguments) and
+            other_rule(arguments) and
+            ...
+            predicate(arguments).
+```
+  
+### Requests
 - **Requests** - we can request **Prolog** to show objects and how they are related.
+
+They are the easiest part of PROLOG. Their purpose, is to call _predicates_ and _rules_ in order
+to show result - `true` or `false`. **Remember, PROLOG is logic language, and it's working
+on binary logic - true or false. These are only 2 types of response.**
+
+The easiest way to use PROLOG language is to use `SWI-Prolog` CLI tool. Right after compiling and importing
+knowledge database into program, you are able to request _predicates_ and _rules_. After providing
+predicate or rule, don't forget about period at the end of the line, before you click `ENTER`.
+
+```
+? - loves(james, books).
+true.
+```
+
+If you have more complicated database, and you are using variables in order to obtain information,
+if quantity of outcome records more than 1, you can list them by clicking `;`.
+
+```
+? - eat(X, apples).
+X = james
+X = janny;
+```
+
+Also, we can stop this searching by clicking `.` instead of `;`.
+
+In case, if you want to use rule, the situation is very similar to just predicates.
+It will be enough to type name of the rule, pass argument and put period at the end, click `ENTER`.
 
 ## Installation and Usage
 
