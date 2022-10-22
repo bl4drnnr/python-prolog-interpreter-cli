@@ -213,6 +213,13 @@ how to work with application in 2 modes.
 
 ### Installation of library
 
+In order to install library, that you will be able to use within your own code, open terminal
+in folder with your `Python` program and install library using `pip`:
+
+```
+pip install python-prolog-interpreter-library
+```
+
 ---
 
 ## Documentation
