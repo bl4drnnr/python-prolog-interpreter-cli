@@ -46,7 +46,7 @@ true.
 ```
 
 But, if we change something in this statement, name _James_ on other name, of _books_ on something else,
-keeping in mind, that in this case out **_Knowledge Databases_** is only one fact, we will get false.
+keeping in mind, that in this case out **_Knowledge Databases_** is only one fact, we will get `false`.
 
 ```
 ? - loves(james, fishing).
@@ -90,6 +90,33 @@ name_of_rule(arguments) if
   
 ### Requests
 - **Requests** - we can request **Prolog** to show objects and how they are related.
+
+They are the easiest part of PROLOG. Their purpose, is to call _predicates_ and _rules_ in order
+to show result - `true` or `false`. **Remember, PROLOG is logic language, and it's working
+on binary logic - true or false. These are only 2 types of response.**
+
+The easiest way to use PROLOG language is to use `SWI-Prolog` CLI tool. Right after compiling and importing
+knowledge database into program, you are able to request _predicates_ and _rules_. After providing
+predicate or rule, don't forget about period at the end of the line, before you click `ENTER`.
+
+```
+? - loves(james, books).
+true.
+```
+
+If you have more complicated database, and you are using variables in order to obtain information,
+if quantity of outcome records more than 1, you can list them by clicking `;`.
+
+```
+? - eat(X, apples).
+X = james
+X = janny;
+```
+
+Also, we can stop this searching by clicking `.` instead of `;`.
+
+In case, if you want to use rule, the situation is very similar to just predicates.
+It will be enough to type name of the rule, pass argument and put period at the end, click `ENTER`.
 
 ## Installation and Usage
 
