@@ -6,13 +6,32 @@
    2. [Rules](#rules)
    3. [Requests](#requests)
 3. [Installation and Usage](#installation-and-usage)
-4. [References and Contact](#references-and-contact)
-5. [License](#license)
+   1. [Installation of CLI](#installation-of-cli)
+   2. [Installation of library](#installation-of-library)
+4. [Documentation](#documentation)
+   1. [Documentation of CLI](#documentation-of-cli)
+      1. [Interactive CLI](#interactive-cli)
+      2. [Classical Terminal-Based Application](#classical-terminal-based-application)
+   2. [Documentation of library](#documentation-of-library)
+5. [References and Contact](#references-and-contact)
+6. [License](#license)
 
 # Python PROLOG Interpreter Library
 
-**PPIL** - is a simple Python witten library, that will allow you to use PROLOG syntax
-within your Python code and operate on it. 
+**PPIL** - is a simple `Python` witten library, that will allow you:
+- Use `PROLOG` syntax within your Python code and operate on it.
+- Use `Python` data objects to write `PROLOG` syntax.
+- Read, write and compile `PROLOG` through `Python`. 
+- **And more, more, more...**
+
+Application is can be used in 3 independent modes:
+- **Interactive CLI**
+- **Classical terminal-based application**
+- `Python` library
+
+Documentation and guidelines for every mode will be listed in [Documentation](#documentation) section.
+
+---
 
 ## Introduction to PROLOG
 
@@ -82,12 +101,67 @@ we can, using uppercase variables, list what records are `true`.
 - **Rules** - conditional statements about the existence of dependencies between objects. Here is how rules are described:
 ```
 name_of_rule(arguments) if
-            other_rule(arguments) and
-            other_rule(arguments) and
-            ...
-            predicate(arguments).
+   other_rule(arguments) and
+   other_rule(arguments) or
+         ...
+   predicate(arguments).
 ```
-  
+
+Keywords `if`, `and` and `or` can be replaced with `:-`, `,` and `;`. So, the rule above we can rewrite in the next way:
+
+```
+name_of_rule(arguments) :-
+   other_rule(arguments),
+   other_rule(arguments);
+         ...
+   predicate(arguments).
+```
+
+The best way to see how rules work is to show it on an example. Let's take the next knowledge databases,
+that is describing parenthood between 2 persons. In this case, as the first argument we have parent, and
+on the second place we have a child - this is `parent` predicate. Also, we will have one more predicate,
+describing `sex` of this person - `male` of `female`. So, here is how it looks like:
+
+```
+parent(zofia, marcin).
+parent(andrzej, marcin).
+parent(andrzej, kasia).
+parent(marcin, ania).
+parent(marcin, krzyś).
+parent(krzyś, mikołaj).
+
+sex(zofia, female).
+sex(kasia, female).
+sex(ania, female).
+sex(andrzej, male).
+sex(marcin, male).
+sex(krzyś, male).
+sex(mikołaj, male).
+```
+
+Therefore, using obtained knowledge how rules should look like and how variables work in predicate, we can
+create our own rule. For example, let's create rule, that is going to check if, first person is mother for
+another person. Here is how it will look like:
+
+```
+mother(X, Y) :- parent(X, Y), sex(X, female).
+```
+
+Let's break this down in more human-readable language to understand how it works. Basically, this statement tells us:
+
+The person `X` is mother for `Y` - `mother(X, Y)` - if - `:-` - they are in parenthood relationships - `parent(X, Y)`
+and - `,` - the person `X` is `female` - `sex(X, female)`. Let's test it on some examples.
+
+Remember, that in case of rules, rule's arguments from left part are pasted as variables in right part.
+
+```
+? - mother(zofia, marcin).
+true.
+```
+
+Yes, this statement is true, because `zofia` is, as we described, `female` - `sex(zofia, female).` and
+she is in parenthood relationships with `marcin`, as we described also - `parent(zofia, marcin).`.
+
 ### Requests
 - **Requests** - we can request **Prolog** to show objects and how they are related.
 
@@ -118,7 +192,40 @@ Also, we can stop this searching by clicking `.` instead of `;`.
 In case, if you want to use rule, the situation is very similar to just predicates.
 It will be enough to type name of the rule, pass argument and put period at the end, click `ENTER`.
 
+---
+
 ## Installation and Usage
+
+### Installation of CLI
+
+- For **MacOS** and **Linux**:
+
+Open terminal, paste and execute next command.
+
+```shell
+bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-lib/master/install-cli.sh)
+```
+
+Right after installation is done, close and restart terminal. Then, open it and type `ppil -h`.
+If you see help messages, application has been installed correctly. 
+Go to [Interactive CLI](#interactive-cli) or [Classical Terminal-Based Application](#classical-terminal-based-application) in order to find out
+how to work with application in 2 modes.
+
+### Installation of library
+
+---
+
+## Documentation
+
+### Documentation of CLI
+
+#### Interactive CLI
+
+#### Classical terminal-based application
+
+### Documentation of library
+
+---
 
 ## References and Contact
 
@@ -126,6 +233,8 @@ It will be enough to type name of the rule, pass argument and put period at the 
 - [Prolog on wiki](https://en.wikipedia.org/wiki/Prolog) - Official english page of Prolog programming language on Wikipedia
 - [Prolog website](https://www.swi-prolog.org/) - Official site and documentation of Prolog
 - [Prolog. Programming W. F. Clocksin C. S. Mellish](https://www.amazon.com/Programming-Prolog-Using-ISO-Standard/dp/3540006788/ref=sr_1_1?crid=3SI3X3IWULTLU&keywords=Programming+in+Prolog&qid=1666038671&qu=eyJxc2MiOiIwLjU4IiwicXNhIjoiMC42NSIsInFzcCI6IjAuNzIifQ%3D%3D&s=books&sprefix=%2Cstripbooks-intl-ship%2C234&sr=1-1) - Prolog guidebook
+
+---
 
 ## License
 
