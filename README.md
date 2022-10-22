@@ -101,12 +101,67 @@ we can, using uppercase variables, list what records are `true`.
 - **Rules** - conditional statements about the existence of dependencies between objects. Here is how rules are described:
 ```
 name_of_rule(arguments) if
-            other_rule(arguments) and
-            other_rule(arguments) and
-            ...
-            predicate(arguments).
+   other_rule(arguments) and
+   other_rule(arguments) or
+         ...
+   predicate(arguments).
 ```
-  
+
+Keywords `if`, `and` and `or` can be replaced with `:-`, `,` and `;`. So, the rule above we can rewrite in the next way:
+
+```
+name_of_rule(arguments) :-
+   other_rule(arguments),
+   other_rule(arguments);
+         ...
+   predicate(arguments).
+```
+
+The best way to see how rules work is to show it on an example. Let's take the next knowledge databases,
+that is describing parenthood between 2 persons. In this case, as the first argument we have parent, and
+on the second place we have a child - this is `parent` predicate. Also, we will have one more predicate,
+describing `sex` of this person - `male` of `female`. So, here is how it looks like:
+
+```
+parent(zofia, marcin).
+parent(andrzej, marcin).
+parent(andrzej, kasia).
+parent(marcin, ania).
+parent(marcin, krzyś).
+parent(krzyś, mikołaj).
+
+sex(zofia, female).
+sex(kasia, female).
+sex(ania, female).
+sex(andrzej, male).
+sex(marcin, male).
+sex(krzyś, male).
+sex(mikołaj, male).
+```
+
+Therefore, using obtained knowledge how rules should look like and how variables work in predicate, we can
+create our own rule. For example, let's create rule, that is going to check if, first person is mother for
+another person. Here is how it will look like:
+
+```
+mother(X, Y) :- parent(X, Y), sex(X, female).
+```
+
+Let's break this down in more human-readable language to understand how it works. Basically, this statement tells us:
+
+The person `X` is mother for `Y` - `mother(X, Y)` - if - `:-` - they are in parenthood relationships - `parent(X, Y)`
+and - `,` - the person `X` is `female` - `sex(X, female)`. Let's test it on some examples.
+
+Remember, that in case of rules, rule's arguments from left part are pasted as variables in right part.
+
+```
+? - mother(zofia, marcin).
+true.
+```
+
+Yes, this statement is true, because `zofia` is, as we described, `female` - `sex(zofia, female).` and
+she is in parenthood relationships with `marcin`, as we described also - `parent(zofia, marcin).`.
+
 ### Requests
 - **Requests** - we can request **Prolog** to show objects and how they are related.
 
@@ -142,6 +197,19 @@ It will be enough to type name of the rule, pass argument and put period at the 
 ## Installation and Usage
 
 ### Installation of CLI
+
+- For **MacOS** and **Linux**:
+
+Open terminal, paste and execute next command.
+
+```shell
+bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-lib/master/install-cli.sh)
+```
+
+Right after installation is done, close and restart terminal. Then, open it and type `ppil -h`.
+If you see help messages, application has been installed correctly. 
+Go to [Interactive CLI](#interactive-cli) or [Classical Terminal-Based Application](#classical-terminal-based-application) in order to find out
+how to work with application in 2 modes.
 
 ### Installation of library
 
