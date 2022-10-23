@@ -33,8 +33,20 @@ def print_documentation(stdscr):
     pad = curses.newpad(PAD_HEIGHT, width)
 
     print_logo(pad, 2)
-    for doc_name, doc in commands_docs.items():
-        pass
+    for doc_name, doc_types in commands_docs.items():
+        for type_of_doc, content in doc_types.items():
+            if type_of_doc == 'long':
+                for i, d in enumerate(content):
+                    if i == 0:
+                        pad.addstr(f' - {d}', curses.A_BOLD)
+                    else:
+                        pad.addstr(d)
+
+    pad.addstr('------------------------------------------\n\n', curses.A_BOLD)
+    pad.addstr('In case of any issues, don\'t hesitate to text me - ')
+    pad.addstr('mikhail.bahdashych@protonmail.com\n\n', curses.A_BOLD | curses.A_UNDERLINE)
+
+    pad.addstr('Press Q to get back to main menu...')
 
     pad_refresh(pad, pad_pos, height, width)
     navigation_control(pad, pad_pos, height, width)
