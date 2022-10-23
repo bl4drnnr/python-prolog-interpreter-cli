@@ -3,7 +3,7 @@ import curses
 from src.common.variables import MENU, LOGO, AVAILABLE_FUNCTIONS
 from src.common.functions import pad_refresh
 
-from src.interactive_cli.execution import command_execution
+from src.interactive_cli.docs import commands_docs
 
 
 def print_logo(stdscr, color_pair_id):
@@ -19,7 +19,8 @@ def print_exit(stdscr):
 
 
 def print_documentation(stdscr):
-    pass
+    for doc in commands_docs.items():
+        pass
 
 
 def print_introduction(stdscr):
