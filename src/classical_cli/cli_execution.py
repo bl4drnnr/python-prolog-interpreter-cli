@@ -11,11 +11,11 @@ def cli_execution(operation, options):
 
     try:
         if operation == 'read':
-            json_converter('read')
+            json_converter('read', path_to_file)
         elif operation == 'write':
-            json_converter('write')
+            json_converter('write', path_to_file)
         elif operation == 'compile':
-            compile_and_execute_prolog_program()
+            compile_and_execute_prolog_program(path_to_file)
         else:
             raise WrongOption
     except WrongOption:

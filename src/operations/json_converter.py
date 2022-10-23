@@ -6,5 +6,5 @@ def prolog_to_json():
     pass
 
 
-def json_converter(operation_type):
+def json_converter(operation_type, file_path):
     pass
