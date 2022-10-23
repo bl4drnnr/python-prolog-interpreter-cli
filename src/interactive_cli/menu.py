@@ -49,25 +49,20 @@ def init_start(stdscr):
     pad = curses.newpad(PAD_HEIGHT, width)
 
     current_row_idx = 0
-    owners_set = False
 
-    while not owners_set:
+    while True:
         print_functions_menu(pad, y, current_row_idx, height, width)
         res = navigate_functions_menu(stdscr, pad, y, current_row_idx, height, width)
-
-        stdscr.clear()
 
         if res == 0:
             return
 
-    if not owners_set:
-        pad_refresh(pad, y, height, width)
-
-    navigation_control(pad, y, height, width)
+        stdscr.clear()
 
 
 def navigate_functions_menu(stdscr, pad, pad_pos, current_row_idx, height, width):
     pad.getch()
+
     while True:
         key = stdscr.getch()
 

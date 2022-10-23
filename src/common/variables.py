@@ -13,6 +13,10 @@ MENU = [
     'Exit\n'
 ]
 
-AVAILABLE_FUNCTIONS = []
+AVAILABLE_FUNCTIONS = [
+    'Read\n',
+    'Write\n',
+    'Compile\n'
+]
 
 PAD_HEIGHT = 16384
