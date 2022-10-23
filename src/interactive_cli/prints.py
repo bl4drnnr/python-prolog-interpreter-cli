@@ -1,9 +1,10 @@
 import curses
+import sys
 
-from src.common.variables import MENU, LOGO, AVAILABLE_FUNCTIONS
-from src.common.functions import pad_refresh
+from src.common.variables import MENU, LOGO, AVAILABLE_FUNCTIONS, PAD_HEIGHT
+from src.common.functions import pad_refresh, navigation_control
 
-from src.interactive_cli.execution import command_execution
+from src.interactive_cli.docs import commands_docs
 
 
 def print_logo(stdscr, color_pair_id):
@@ -15,15 +16,58 @@ def print_logo(stdscr, color_pair_id):
 
 
 def print_exit(stdscr):
-    pass
+    print_logo(stdscr, 4)
+    stdscr.addstr('Hope, you had fun. See ya again...\n\n', curses.A_BOLD)
+
+    stdscr.addstr('In case of any question, feel free to text me - ')
+    stdscr.addstr('mikhail.bahdashych@protonmail.com\n\n', curses.A_BOLD | curses.A_UNDERLINE)
+
+    stdscr.addstr('Press any key to exit...')
+    stdscr.getch()
+    sys.exit()
 
 
 def print_documentation(stdscr):
-    pass
+    height, width = stdscr.getmaxyx()
+    pad_pos = 0
+    pad = curses.newpad(PAD_HEIGHT, width)
+
+    print_logo(pad, 2)
+    for doc_name, doc_types in commands_docs.items():
+        for type_of_doc, content in doc_types.items():
+            if type_of_doc == 'long':
+                for i, d in enumerate(content):
+                    if i == 0:
+                        pad.addstr(f' - {d}', curses.A_BOLD)
+                    else:
+                        pad.addstr(d)
+
+    pad.addstr('------------------------------------------\n\n', curses.A_BOLD)
+    pad.addstr('In case of any issues, don\'t hesitate to text me - ')
+    pad.addstr('mikhail.bahdashych@protonmail.com\n\n', curses.A_BOLD | curses.A_UNDERLINE)
+
+    pad.addstr('Press Q to get back to main menu...')
+
+    pad_refresh(pad, pad_pos, height, width)
+    navigation_control(pad, pad_pos, height, width)
 
 
 def print_introduction(stdscr):
-    pass
+    print_logo(stdscr, 2)
+
+    stdscr.addstr('PPIL (stands for Python Prolog Interpreter Library)', curses.A_BOLD)
+    stdscr.addstr(' - is the program, that allows to use syntax of Prolog (logical programming language) ')
+    stdscr.addstr('within Python programs.\n\n')
+
+    stdscr.addstr('Right now, you are working with its CLI version. This CLI tool allows to ')
+    stdscr.addstr('manage, convert (using JSON format), compile and execute Prolog programs.\n\n')
+
+    stdscr.addstr('Use ')
+    stdscr.addstr('ARROWS', curses.A_BOLD)
+    stdscr.addstr(' on your keyboard for navigations.\n')
+    stdscr.addstr('Press ')
+    stdscr.addstr('ENTER', curses.A_BOLD)
+    stdscr.addstr(' to confirm your choice.\n\n')
 
 
 def print_functions_introduction(stdscr):
