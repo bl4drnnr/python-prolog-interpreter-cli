@@ -4,3 +4,7 @@ class Error(Exception):
 
 class SingleArgument(Error):
     pass
+
+
+class WrongOption(Error):
+    pass
