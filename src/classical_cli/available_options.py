@@ -1,6 +1,6 @@
 import argparse
 
-CLI_OPERATIONS = []
+CLI_OPERATIONS = ['read', 'write', 'compile']
 
 
 def setup_available_options(argv):
