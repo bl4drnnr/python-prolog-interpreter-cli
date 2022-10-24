@@ -3,7 +3,6 @@ from src.common.read_file import read_file
 from src.common.variables import JSON_FORMAT
 
 
-
 def json_to_prolog(file_path, stdscr=None):
     data = read_file(file_path, stdscr)
 
