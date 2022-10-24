@@ -1,6 +1,6 @@
 # Table of Contents
 
-1. [Python PROLOG Interpreter Library](#python-prolog-interpreter-library)
+1. [Python PROLOG Interpreter Library CLI](#python-prolog-interpreter-library-cli)
 2. [Introduction to PROLOG](#introduction-to-prolog)
    1. [Facts](#facts)
    2. [Rules](#rules)
@@ -16,7 +16,7 @@
 5. [References and Contact](#references-and-contact)
 6. [License](#license)
 
-# Python PROLOG Interpreter Library
+# Python PROLOG Interpreter Library CLI
 
 **PPIL** - is a simple `Python` witten library, that will allow you:
 - Use `PROLOG` syntax within your Python code and operate on it.
@@ -30,6 +30,10 @@ Application is can be used in 3 independent modes:
 - `Python` library
 
 Documentation and guidelines for every mode will be listed in [Documentation](#documentation) section.
+
+What you see right now, is CLI. In case if you want to use library and use
+Prolog syntax within your Python applications see [this](https://github.com/bl4drnnr/python-prolog-interpreter-lib) repository in order
+to obtain more information.
 
 ---
 
