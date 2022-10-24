@@ -1,13 +1,17 @@
-def json_to_prolog(file_path):
-    pass
+from src.common.read_file import read_file
 
 
-def prolog_to_json(file_path):
-    pass
+def json_to_prolog(file_path, stdscr=None):
+    data = read_file(file_path, stdscr)
+    print('data', data)
 
 
-def json_converter(operation_type, file_path):
+def prolog_to_json(file_path, stdscr=None):
+    read_file(file_path, stdscr)
+
+
+def json_converter(operation_type, file_path, stdscr=None):
     if operation_type == 'read':
-        json_to_prolog(file_path)
+        json_to_prolog(file_path, stdscr)
     elif operation_type == 'write':
-        prolog_to_json(file_path)
+        prolog_to_json(file_path, stdscr)
