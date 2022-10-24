@@ -1,7 +1,7 @@
 commands_docs = {
-    'Read': {
+    'Read from JSON': {
         'short': [
-            'Read - option, that allows to convert JSON format file into Prolog program.\n',
+            'Read from JSON - option, that allows to convert JSON format file into Prolog program.\n',
             'Make sure, that your JSON file is in proper format, more about it see in Docs or in README file.\n\n'
         ],
         'long': [
@@ -11,9 +11,9 @@ commands_docs = {
             'you can find in README documentation file and below: \n\n'
         ]
     },
-    'Write': {
+    'Write to JSON': {
         'short': [
-            'Write - option, that allows to convert Prolog program into JSON file.\n',
+            'Write to JSON - option, that allows to convert Prolog program into JSON file.\n',
             'Use it if you need to use converted data somewhere else (in your API, for example)\n\n'
         ],
         'long': [
@@ -21,9 +21,9 @@ commands_docs = {
             'In order, if there is need to use converted data somewhere else (API, for instance),\n\n'
         ]
     },
-    'Compile': {
+    'Compile Prolog': {
         'short': [
-            'Compilation - compiles Prolog program.\n',
+            'Compilation Prolog - compiles Prolog program.\n',
             'Provides opportunity either to print result on screen or save to file.\n\n'
         ],
         'long': [
