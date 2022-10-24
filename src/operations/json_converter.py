@@ -10,6 +10,12 @@ def json_to_prolog(file_path, stdscr=None):
     for key, value in data.items():
         if key not in JSON_FORMAT:
             raise WrongJsonFormat
+        else:
+            for item_key, item_value in value.items():
+                if item_key not in JSON_FORMAT[key]:
+                    raise WrongJsonFormat
+                if type(item_value).__name__ != JSON_FORMAT[key][item_key]:
+                    raise WrongJsonFormat
 
 
 def prolog_to_json(file_path, stdscr=None):

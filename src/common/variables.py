@@ -23,7 +23,7 @@ PAD_HEIGHT = 16384
 
 JSON_FORMAT = {
     "predicate": {
-        "name": "string",
-        "arguments": "array"
+        "name": "str",
+        "arguments": "list"
     }
 }
