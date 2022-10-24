@@ -1,9 +1,13 @@
 from src.common.read_file import read_file
 
+from src.common.variables import JSON_FORMAT
+
 
 def json_to_prolog(file_path, stdscr=None):
     data = read_file(file_path, stdscr)
-    print('data', data)
+
+    for key, value in data.items():
+        pass
 
 
 def prolog_to_json(file_path, stdscr=None):

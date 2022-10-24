@@ -29,5 +29,7 @@ def command_execution(stdscr, command):
         json_converter('write', path_to_file, stdscr)
     elif command == 'Compile Prolog':
         compile_and_execute_prolog_program(path_to_file, stdscr)
-    else:
-        return
+
+    stdscr.addstr('\n\nPress any key to get back...\n\n')
+    stdscr.addstr('#################################', curses.A_BOLD)
+    stdscr.getch()

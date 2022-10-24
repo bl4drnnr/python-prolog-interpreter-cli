@@ -8,3 +8,7 @@ class SingleArgument(Error):
 
 class WrongOption(Error):
     pass
+
+
+class WrongJsonFormat(Error):
+    pass
