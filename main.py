@@ -4,7 +4,7 @@ from curses import wrapper
 
 from src.classical_cli.available_options import setup_available_options, CLI_OPERATIONS
 from src.classical_cli.cli_execution import cli_execution
-from src.classical_cli.exceptions import SingleArgument
+from src.common.exceptions import SingleArgument
 
 from src.interactive_cli.init_curses_settings import init_curses_settings
 from src.interactive_cli.menu import init_interactive_cli

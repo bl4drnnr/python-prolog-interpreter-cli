@@ -21,4 +21,9 @@ AVAILABLE_FUNCTIONS = [
 
 PAD_HEIGHT = 16384
 
-JSON_FORMAT = {}
+JSON_FORMAT = {
+    "predicate": {
+        "name": "str",
+        "arguments": "list"
+    }
+}
