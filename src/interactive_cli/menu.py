@@ -8,7 +8,7 @@ from src.interactive_cli.prints import \
 
 from src.interactive_cli.execution import command_execution
 
-from src.common.functions import pad_refresh, navigation_control
+from src.common.functions import pad_refresh
 from src.common.variables import MENU, PAD_HEIGHT, AVAILABLE_FUNCTIONS
 
 
