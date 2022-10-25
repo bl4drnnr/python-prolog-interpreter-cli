@@ -12,3 +12,7 @@ class WrongOption(Error):
 
 class WrongJsonFormat(Error):
     pass
+
+
+class WrongFactFormat(Error):
+    pass
