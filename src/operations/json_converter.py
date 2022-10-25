@@ -33,9 +33,13 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
 def prolog_to_json(path_input_file, path_output_file, stdscr=None):
     output_program = ''
 
-    read_data = read_file(path_input_file, stdscr)
-    print(read_data)
-    # check_prolog_format(read_data)
+    read_data = read_file(path_input_file, stdscr).split('\n')
+    filtered_data = []
+
+    for i in read_data:
+        filtered_data.append(i.rstrip('\n'))
+
+    check_prolog_format(filtered_data)
 
 
 def json_converter(operation_type, path_input_file, path_output_file, stdscr=None):
