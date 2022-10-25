@@ -16,3 +16,7 @@ class WrongJsonFormat(Error):
 
 class WrongFactFormat(Error):
     pass
+
+
+class WrongPrologFormat(Error):
+    pass

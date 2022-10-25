@@ -36,8 +36,6 @@ def command_execution(stdscr, command):
     except WrongJsonFormat:
         print_text('Wrong JSON file format!', stdscr, error=True)
 
-    stdscr.addstr('\nSUCCESS!', curses.color_pair(2))
-
     stdscr.addstr('\n\nPress any key to get back...\n\n')
     stdscr.addstr('#################################', curses.A_BOLD)
     stdscr.getch()
