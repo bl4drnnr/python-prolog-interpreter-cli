@@ -11,10 +11,14 @@ def setup_available_options(argv):
     parser.add_argument('-h', '--help',
                         action='help',
                         help='Display this message.')
-    parser.add_argument('-f', '--file',
+    parser.add_argument('-i', '--input-file',
                         metavar='',
                         required=True,
                         help='Path to file to operate on.')
+    parser.add_argument('-o', '--output-file',
+                        metavar='',
+                        required=True,
+                        help='Path and name of output file.')
 
     json_group.add_argument('-r', '--read',
                             action='store_true',

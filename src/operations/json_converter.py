@@ -4,8 +4,8 @@ from src.common.variables import JSON_FORMAT
 from src.common.exceptions import WrongJsonFormat
 
 
-def json_to_prolog(file_path, stdscr=None):
-    data = read_file(file_path, stdscr)
+def json_to_prolog(path_input_file, path_output_file, stdscr=None):
+    data = read_file(path_input_file, stdscr)
 
     for key, value in data.items():
         if key not in JSON_FORMAT:
@@ -18,12 +18,12 @@ def json_to_prolog(file_path, stdscr=None):
                     raise WrongJsonFormat
 
 
-def prolog_to_json(file_path, stdscr=None):
-    read_file(file_path, stdscr)
+def prolog_to_json(path_input_file, path_output_file, stdscr=None):
+    read_file(path_input_file, stdscr)
 
 
-def json_converter(operation_type, file_path, stdscr=None):
+def json_converter(operation_type, path_input_file, path_output_file, stdscr=None):
     if operation_type == 'read':
-        json_to_prolog(file_path, stdscr)
+        json_to_prolog(path_input_file, path_output_file, stdscr)
     elif operation_type == 'write':
-        prolog_to_json(file_path, stdscr)
+        prolog_to_json(path_input_file, path_output_file, stdscr)

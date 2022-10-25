@@ -23,15 +23,16 @@ def command_execution(stdscr, command):
         else:
             stdscr.addstr(row)
 
-    path_to_file = print_raw_input(stdscr, 'Please, provide path to file: ').strip()
+    path_input_file = print_raw_input(stdscr, 'Please, provide path to input file: ').strip()
+    path_output_file = path_input_file(stdscr, 'Please, provide path for output file: ').strip()
 
     try:
         if command == 'Read from JSON':
-            json_converter('read', path_to_file, stdscr)
+            json_converter('read', path_input_file, path_output_file, stdscr)
         elif command == 'Write to JSON':
-            json_converter('write', path_to_file, stdscr)
+            json_converter('write', path_input_file, path_output_file, stdscr)
         elif command == 'Compile Prolog':
-            compile_and_execute_prolog_program(path_to_file, stdscr)
+            compile_and_execute_prolog_program(path_input_file, path_output_file, stdscr)
     except WrongJsonFormat:
         print_text('Wrong JSON file format!', stdscr, error=True)
 
