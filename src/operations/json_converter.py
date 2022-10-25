@@ -5,7 +5,7 @@ from src.common.json_format_rules import JSON_FORMAT, ALLOWED_CONDITIONS_TYPES
 from src.common.exceptions import WrongJsonFormat, WrongFactFormat
 
 
-def check_file_format(data):
+def check_json_format(data):
     predicates = []
     facts = []
 
@@ -58,7 +58,7 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
     output_program = ''
 
     read_data = read_file(path_input_file, stdscr)
-    data = check_file_format(read_data)
+    data = check_json_format(read_data)
 
     for predicate in data['predicates']:
         output_program += f"{predicate['name']}({', '.join(predicate['arguments'])}).\n"
@@ -76,7 +76,8 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
 
 
 def prolog_to_json(path_input_file, path_output_file, stdscr=None):
-    read_file(path_input_file, stdscr)
+    output_program = ''
+    read_data = read_file(path_input_file, stdscr)
 
 
 def json_converter(operation_type, path_input_file, path_output_file, stdscr=None):

@@ -24,7 +24,7 @@ def command_execution(stdscr, command):
             stdscr.addstr(row)
 
     path_input_file = print_raw_input(stdscr, 'Please, provide path to input file: ').strip()
-    path_output_file = path_input_file(stdscr, 'Please, provide path for output file: ').strip()
+    path_output_file = print_raw_input(stdscr, 'Please, provide path for output file: ').strip()
 
     try:
         if command == 'Read from JSON':
@@ -35,6 +35,8 @@ def command_execution(stdscr, command):
             compile_and_execute_prolog_program(path_input_file, path_output_file, stdscr)
     except WrongJsonFormat:
         print_text('Wrong JSON file format!', stdscr, error=True)
+
+    stdscr.addstr('\nSUCCESS!', curses.color_pair(2))
 
     stdscr.addstr('\n\nPress any key to get back...\n\n')
     stdscr.addstr('#################################', curses.A_BOLD)

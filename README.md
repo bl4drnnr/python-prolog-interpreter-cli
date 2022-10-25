@@ -1,22 +1,18 @@
 # Table of Contents
 
-1. [Python PROLOG Interpreter Library CLI](#python-prolog-interpreter-library-cli)
+1. [Python PROLOG Interpreter CLI](#python-prolog-interpreter-cli)
 2. [Introduction to PROLOG](#introduction-to-prolog)
    1. [Facts](#facts)
    2. [Rules](#rules)
    3. [Requests](#requests)
-3. [Installation and Usage](#installation-and-usage)
-   1. [Installation of CLI](#installation-of-cli)
-   2. [Installation of library](#installation-of-library)
+3. [Installation](#installation)
 4. [Documentation](#documentation)
-   1. [Documentation of CLI](#documentation-of-cli)
-      1. [Interactive CLI](#interactive-cli)
-      2. [Classical Terminal-Based Application](#classical-terminal-based-application)
-   2. [Documentation of library](#documentation-of-library)
+   1. [Interactive CLI](#interactive-cli)
+   2. [Classical Terminal-Based Application](#classical-terminal-based-application)
 5. [References and Contact](#references-and-contact)
 6. [License](#license)
 
-# Python PROLOG Interpreter Library CLI
+# Python PROLOG Interpreter CLI
 
 **PPIL** - is a simple `Python` witten library, that will allow you:
 - Use `PROLOG` syntax within your Python code and operate on it.
@@ -198,43 +194,26 @@ It will be enough to type name of the rule, pass argument and put period at the 
 
 ---
 
-## Installation and Usage
-
-### Installation of CLI
+## Installation
 
 - For **MacOS** and **Linux**:
 
 Open terminal, paste and execute next command.
 
 ```shell
-bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-lib/master/install-cli.sh)
+bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-lib/master/install.sh)
 ```
 
 Right after installation is done, close and restart terminal. Then, open it and type `ppil -h`.
 If you see help messages, application has been installed correctly. 
-Go to [Interactive CLI](#interactive-cli) or [Classical Terminal-Based Application](#classical-terminal-based-application) in order to find out
-how to work with application in 2 modes.
-
-### Installation of library
-
-In order to install library, that you will be able to use within your own code, open terminal
-in folder with your `Python` program and install library using `pip`:
-
-```
-pip install python-prolog-interpreter-library
-```
 
 ---
 
 ## Documentation
 
-### Documentation of CLI
+### Interactive CLI
 
-#### Interactive CLI
-
-#### Classical terminal-based application
-
-### Documentation of library
+### Classical terminal-based application
 
 ---
 
