@@ -5,6 +5,7 @@ JSON_FORMAT = {
     },
     "fact": {
         "name": "str",
+        "arguments": "list",
         "conditions": "list",
         "joins": "list"
     }
