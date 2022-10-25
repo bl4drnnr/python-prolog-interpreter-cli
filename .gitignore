@@ -3,5 +3,6 @@ venv
 .DS_Store
 __pycache__
 
+test.py
 *.json
 *.pl
