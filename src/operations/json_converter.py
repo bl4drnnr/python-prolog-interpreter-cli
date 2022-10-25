@@ -1,13 +1,18 @@
+import json
+
 from src.common.files.read_file import read_file
 from src.common.files.write_file import write_file
 
 from src.common.checkers.check_json_format import check_json_format
+from src.common.checkers.check_prolog_format import check_prolog_format
+
+from src.common.functions import print_text
 
 
 def json_to_prolog(path_input_file, path_output_file, stdscr=None):
     output_program = ''
 
-    read_data = read_file(path_input_file, stdscr)
+    read_data = json.loads(read_file(path_input_file, stdscr))
     data = check_json_format(read_data)
 
     for predicate in data['predicates']:
@@ -27,11 +32,16 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
 
 def prolog_to_json(path_input_file, path_output_file, stdscr=None):
     output_program = ''
+
     read_data = read_file(path_input_file, stdscr)
+    print(read_data)
+    # check_prolog_format(read_data)
 
 
 def json_converter(operation_type, path_input_file, path_output_file, stdscr=None):
     if operation_type == 'read':
         json_to_prolog(path_input_file, path_output_file, stdscr)
+        print_text('Success! File has been successfully read and rewritten to Prolog!', stdscr)
     elif operation_type == 'write':
         prolog_to_json(path_input_file, path_output_file, stdscr)
+        print_text('Success! File has been successfully read and rewritten to JSON!', stdscr)
