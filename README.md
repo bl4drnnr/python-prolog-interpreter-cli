@@ -205,7 +205,7 @@ It will be enough to type name of the rule, pass argument and put period at the 
 Open terminal, paste and execute next command.
 
 ```shell
-bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-lib/master/install.sh)
+bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-cli/master/install.sh)
 ```
 
 Right after installation is done, close and restart terminal. Then, open it and type `ppil -h`.
