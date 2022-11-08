@@ -1,6 +1,6 @@
 import sys
 
-from src.common.exceptions import WrongOption, WrongJsonFormat
+from src.common.exceptions import WrongOption, WrongJsonFormat, WrongFactFormat
 
 from src.operations.json_converter import json_converter
 from src.operations.compile_prolog import compile_and_execute_prolog_program
@@ -21,6 +21,9 @@ def cli_execution(operation, options):
             raise WrongOption
     except WrongOption:
         print('Wrong option!')
+        sys.exit()
+    except WrongFactFormat:
+        print('Wrong fact format!')
         sys.exit()
     except WrongJsonFormat:
         print('Wrong JSON file format!')
