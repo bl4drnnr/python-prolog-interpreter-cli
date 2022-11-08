@@ -15,8 +15,9 @@ MENU = [
 
 AVAILABLE_FUNCTIONS = [
     'Read from JSON\n',
-    'Write to JSON\n',
-    'Compile Prolog\n'
+    'Write to JSON\n\n',
+    'Compile Prolog\n\n',
+    'Fetch data\n'
 ]
 
 PAD_HEIGHT = 16384

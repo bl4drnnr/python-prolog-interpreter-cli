@@ -4,19 +4,37 @@ from src.common.exceptions import WrongOption, WrongJsonFormat, WrongFactFormat
 
 from src.operations.json_converter import json_converter
 from src.operations.compile_prolog import compile_and_execute_prolog_program
+from src.operations.fetch_data import fetch_data
+
+
+def check_for_options(options, required_options):
+    for option in options:
+        if option not in required_options:
+            raise WrongOption
 
 
 def cli_execution(operation, options):
-    path_input_file = options['input_file']
-    path_output_file = options['output_file']
-
     try:
         if operation == 'read':
-            json_converter('read', path_input_file, path_output_file)
+            required_options = ['input_file', 'output_file']
+            check_for_options(options, required_options)
+
+            json_converter('read', options['input_file'], options['output_file'])
         elif operation == 'write':
-            json_converter('write', path_input_file, path_output_file)
+            required_options = ['input_file', 'output_file']
+            check_for_options(options, required_options)
+
+            json_converter('write', options['input_file'], options['output_file'])
         elif operation == 'compile':
-            compile_and_execute_prolog_program(path_input_file, path_output_file)
+            required_options = ['input_file', 'output_file']
+            check_for_options(options, required_options)
+
+            compile_and_execute_prolog_program(options['input_file'], options['output_file'])
+        elif operation == 'fetch':
+            required_options = ['url']
+            check_for_options(options, required_options)
+
+            fetch_data(options['url'])
         else:
             raise WrongOption
     except WrongOption:
