@@ -38,7 +38,9 @@ commands_docs = {
             'Detects automatically if it is JSON either Prolog.\n\n'
         ],
         'long': [
-            ''
+            'Fetching data - option, that is used in order to get data from an open source.\n',
+            'Provides ability to automatically detect the type of data - JSON or Prolog.\n',
+            'Converted will be save in the root folder of the project.\n\n'
         ]
     }
 }
