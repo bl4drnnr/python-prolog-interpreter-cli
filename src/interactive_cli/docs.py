@@ -31,5 +31,14 @@ commands_docs = {
             'Allows compilation of Prolog program by providing path to .pl file.\n',
             'Also, allows either to print result on screen or save in file.\n\n'
         ]
+    },
+    'Fetch data': {
+        'short': [
+            'Fetching data - allows to get data from an open source.\n',
+            'Detects automatically if it is JSON either Prolog.\n\n'
+        ],
+        'long': [
+            ''
+        ]
     }
 }
