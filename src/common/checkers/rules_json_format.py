@@ -8,6 +8,10 @@ JSON_FORMAT = {
         "arguments": "list",
         "conditions": "list",
         "joins": "list"
+    },
+    "list": {
+        "name": "str",
+        "items": "list"
     }
 }
 

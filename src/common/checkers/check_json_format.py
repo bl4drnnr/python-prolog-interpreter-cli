@@ -5,6 +5,7 @@ from src.common.exceptions import WrongJsonFormat, WrongFactFormat
 def check_json_format(data):
     predicates = []
     facts = []
+    lists = []
 
     for key, value in data.items():
         if key not in JSON_FORMAT:
@@ -16,6 +17,10 @@ def check_json_format(data):
                     raise WrongJsonFormat
                 if type(item_value).__name__ != JSON_FORMAT[key][item_key]:
                     raise WrongJsonFormat
+
+                if item_key == 'name':
+                    if 65 < ord(item_value[0]) < 90 or 65 < ord(item_value[-1]) < 90:
+                        raise WrongJsonFormat
 
         if key == 'predicate':
             predicates.append(value)
@@ -45,7 +50,11 @@ def check_json_format(data):
 
             facts.append(value)
 
+        elif key == 'list':
+            lists.append(value)
+
     return {
         'predicates': predicates,
-        'facts': facts
+        'facts': facts,
+        'lists': lists
     }

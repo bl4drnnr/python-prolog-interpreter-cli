@@ -27,6 +27,9 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
                 output_program += fact['joins'][index]
         output_program += '.\n'
 
+    for p_list in data['lists']:
+        output_program += f"{p_list['name']}={p_list['items']}"
+
     write_file(output_program, path_output_file, stdscr)
 
 
