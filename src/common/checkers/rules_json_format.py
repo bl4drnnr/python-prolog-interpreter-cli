@@ -8,7 +8,12 @@ JSON_FORMAT = {
         "arguments": "list",
         "conditions": "list",
         "joins": "list"
+    },
+    "list": {
+        "name": "str",
+        "items": "list"
     }
 }
 
+ALLOWED_CONDITIONS = ['and', ',', 'or', ';']
 ALLOWED_CONDITIONS_TYPES = ['predicate']

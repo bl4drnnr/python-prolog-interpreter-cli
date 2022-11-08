@@ -1,10 +1,11 @@
-from src.common.checkers.rules_json_format import JSON_FORMAT, ALLOWED_CONDITIONS_TYPES
+from src.common.checkers.rules_json_format import JSON_FORMAT, ALLOWED_CONDITIONS_TYPES, ALLOWED_CONDITIONS
 from src.common.exceptions import WrongJsonFormat, WrongFactFormat
 
 
 def check_json_format(data):
     predicates = []
     facts = []
+    lists = []
 
     for key, value in data.items():
         if key not in JSON_FORMAT:
@@ -16,6 +17,10 @@ def check_json_format(data):
                     raise WrongJsonFormat
                 if type(item_value).__name__ != JSON_FORMAT[key][item_key]:
                     raise WrongJsonFormat
+
+                if item_key == 'name':
+                    if 65 < ord(item_value[0]) < 90 or 65 < ord(item_value[-1]) < 90:
+                        raise WrongJsonFormat
 
         if key == 'predicate':
             predicates.append(value)
@@ -33,6 +38,10 @@ def check_json_format(data):
                     type(value['joins']).__name__ != 'list' or \
                     len(value['joins']) != len(value['conditions']) - 1:
                 raise WrongFactFormat
+            else:
+                for joiner in value['joins']:
+                    if joiner.lower() not in ALLOWED_CONDITIONS:
+                        raise WrongFactFormat
 
             for condition in value['conditions']:
                 if 'type' not in condition:
@@ -45,7 +54,11 @@ def check_json_format(data):
 
             facts.append(value)
 
+        elif key == 'list':
+            lists.append(value)
+
     return {
         'predicates': predicates,
-        'facts': facts
+        'facts': facts,
+        'lists': lists
     }

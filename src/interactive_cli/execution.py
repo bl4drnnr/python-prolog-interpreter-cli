@@ -1,6 +1,6 @@
 import curses
 
-from src.common.exceptions import WrongJsonFormat
+from src.common.exceptions import WrongJsonFormat, WrongFactFormat
 
 from src.interactive_cli.prints import print_logo
 from src.interactive_cli.docs import commands_docs
@@ -33,6 +33,8 @@ def command_execution(stdscr, command):
             json_converter('write', path_input_file, path_output_file, stdscr)
         elif command == 'Compile Prolog':
             compile_and_execute_prolog_program(path_input_file, path_output_file, stdscr)
+    except WrongFactFormat:
+        print_text('Wrong fact format!', stdscr, error=True)
     except WrongJsonFormat:
         print_text('Wrong JSON file format!', stdscr, error=True)
 

@@ -12,6 +12,10 @@
 5. [References and Contact](#references-and-contact)
 6. [License](#license)
 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+---
+
 # Python PROLOG Interpreter CLI
 
 **PPIL** - is a simple `Python` witten library, that will allow you:
