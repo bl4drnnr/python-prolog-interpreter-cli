@@ -22,11 +22,11 @@
 - Use `PROLOG` syntax within your Python code and operate on it.
 - Use `Python` data objects to write `PROLOG` syntax.
 - Read, write and compile `PROLOG` through `Python`. 
-- Fetch data from opened sources.
 - **And more, more, more...**
 
-Application consists 2 parts:
-- **Interactive CLI** and **Classical terminal-based application**
+Application is can be used in 3 independent modes:
+- **Interactive CLI**
+- **Classical terminal-based application**
 - `Python` library
 
 Documentation and guidelines for every mode will be listed in [Documentation](#documentation) section.
@@ -205,7 +205,7 @@ It will be enough to type name of the rule, pass argument and put period at the 
 Open terminal, paste and execute next command.
 
 ```shell
-bash <(curl -s -S -L https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-cli/master/install.sh)
+bash <(curl -s -S -L "https://raw.githubusercontent.com/bl4drnnr/python-prolog-interpreter-cli/master/install.sh")
 ```
 
 Right after installation is done, close and restart terminal. Then, open it and type `ppil -h`.
