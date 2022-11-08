@@ -15,4 +15,5 @@ JSON_FORMAT = {
     }
 }
 
+ALLOWED_CONDITIONS = ['and', ',', 'or', ';']
 ALLOWED_CONDITIONS_TYPES = ['predicate']

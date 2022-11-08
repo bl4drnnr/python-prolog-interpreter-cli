@@ -1,4 +1,4 @@
-from src.common.checkers.rules_json_format import JSON_FORMAT, ALLOWED_CONDITIONS_TYPES
+from src.common.checkers.rules_json_format import JSON_FORMAT, ALLOWED_CONDITIONS_TYPES, ALLOWED_CONDITIONS
 from src.common.exceptions import WrongJsonFormat, WrongFactFormat
 
 
@@ -38,6 +38,10 @@ def check_json_format(data):
                     type(value['joins']).__name__ != 'list' or \
                     len(value['joins']) != len(value['conditions']) - 1:
                 raise WrongFactFormat
+            else:
+                for joiner in value['joins']:
+                    if joiner.lower() not in ALLOWED_CONDITIONS:
+                        raise WrongFactFormat
 
             for condition in value['conditions']:
                 if 'type' not in condition:

@@ -24,7 +24,8 @@ def json_to_prolog(path_input_file, path_output_file, stdscr=None):
             if condition['type'] == 'predicate':
                 output_program += f"{condition['name']}({', '.join(condition['arguments'])})"
             if len(fact['joins']):
-                output_program += fact['joins'][index]
+                if index + 1 < len(fact['conditions']):
+                    output_program += fact['joins'][index]
         output_program += '.\n'
 
     for p_list in data['lists']:
