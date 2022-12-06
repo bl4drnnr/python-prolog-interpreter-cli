@@ -24,7 +24,7 @@
 - Read, write and compile `PROLOG` through `Python`. 
 - **And more, more, more...**
 
-Application is can be used in 3 independent modes:
+Application is built from 3 different parts:
 - **Interactive CLI**
 - **Classical terminal-based application**
 - `Python` library
