@@ -1,13 +1,8 @@
-from ppil.ppil._api_response_handler import WrongFactFormat, WrongJsonFormat
-from ppil.ppil._variables import JSON_FORMAT_KEYS
+from src.common.exceptions import WrongFactFormat, WrongJsonFormat
+from src.common.variables import JSON_FORMAT_KEYS
 
 
-from src.common.elements.Predicate import Predicate
-from src.common.elements.PList import PList
-from src.common.elements.Fact import Fact
-from src.common.elements.ConditionStatement import ConditionStatement
-from src.common.elements.Condition import Condition
-from src.common.elements.Atom import Atom
+from src.common.elements import *
 
 
 def _check_item_type(item):
@@ -63,20 +58,20 @@ class JsonFormatChecker:
 
     def _check_items_format(self, data):
         if not data.get('data'):
-            raise WrongJsonFormat(response="There no 'data' body.")
+            raise WrongJsonFormat(message="There no 'data' body.")
 
         data = data['data']
 
         for item in data:
             if item.get('type') is None:
-                raise WrongJsonFormat(response=f"Wrong item format: {str(item)}")
+                raise WrongJsonFormat(message=f"Wrong item format: {str(item)}")
 
             if item.get('type') not in JSON_FORMAT_KEYS:
-                raise WrongJsonFormat(response=f"Wrong element name: {str(item)}")
+                raise WrongJsonFormat(message=f"Wrong element name: {str(item)}")
 
             if item.get('type') == 'predicate':
                 if item.get('arguments') is None or item.get('name') is None:
-                    raise WrongJsonFormat(response=f"No name or arguments for predicate: {str(item)}")
+                    raise WrongJsonFormat(message=f"No name or arguments for predicate: {str(item)}")
 
                 self._parsed_data.get('predicates').append(Predicate(item.get('name'), _parse_predicate(item)))
 
@@ -86,7 +81,7 @@ class JsonFormatChecker:
                         item.get('conditions') is None or \
                         item.get('joins') is None or \
                         item.get('name') is None:
-                    raise WrongFactFormat(response=f"Lack of required field for fact: {str(item)}")
+                    raise WrongFactFormat(message=f"Lack of required field for fact: {str(item)}")
 
                 [arguments, conditions] = _parse_fact(item)
                 self._parsed_data.get('facts').append(Fact(item.get('name'), arguments, item.get('joins'), conditions))

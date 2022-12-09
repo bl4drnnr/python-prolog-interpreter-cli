@@ -25,8 +25,8 @@ def classical_cli(argv):
     try:
         if len(operation) != 1:
             raise SingleArgument
-    except SingleArgument:
-        print('One operation argument is expected.')
+    except SingleArgument as sa:
+        print(sa.message)
         sys.exit()
 
     cli_execution(operation[0], set_options)
