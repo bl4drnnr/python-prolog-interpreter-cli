@@ -141,7 +141,7 @@ class PrologFormatChecker:
 
     def check_prolog_format(self, prolog_string):
         self._reset_data()
-        self._prolog_string = _parse_atom(prolog_string['data'].replace('\n', '').strip())
+        self._prolog_string = _parse_atom(prolog_string.replace('\n', '').strip())
         return self._check_items()
 
     def _reset_data(self):

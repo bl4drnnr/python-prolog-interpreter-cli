@@ -32,6 +32,8 @@ def cli_execution(operation, options):
 
             json_data = json_format_checker.check_json_format(file_data)
             output_program = json_parser.parse_json(json_data)
+
+            write_file(output_program, options['output_file'])
         elif operation == 'write':
             required_options = ['input_file', 'output_file']
             check_for_options(options, required_options)
@@ -43,6 +45,8 @@ def cli_execution(operation, options):
 
             prolog_data = prolog_format_checker.check_prolog_format(file_data)
             output_program = prolog_parser.parse_prolog(prolog_data)
+
+            write_file({'data': output_program}, options['output_file'])
         elif operation == 'compile':
             required_options = ['input_file', 'output_file']
             check_for_options(options, required_options)
@@ -53,6 +57,8 @@ def cli_execution(operation, options):
 
             compiler = Compiler(json_parser, json_format_checker)
             execution_result = compiler.execute_code(file_data)
+
+            write_file(execution_result, options['output_file'])
         elif operation == 'fetch':
             required_options = ['url']
             check_for_options(options, required_options)
