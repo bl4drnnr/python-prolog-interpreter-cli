@@ -1,6 +1,6 @@
 class Error(Exception):
     def __init__(self, message):
-        self.response = {"data": message}
+        self.message = message
 
 
 class WrongJsonFormat(Error):
@@ -34,5 +34,5 @@ class SingleArgument(Error):
 
 
 class WrongOption(Error):
-    def __init__(self, message="Wrong option!"):
+    def __init__(self, message="Wrong option"):
         super().__init__(message)

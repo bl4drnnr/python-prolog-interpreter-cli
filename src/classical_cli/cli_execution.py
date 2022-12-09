@@ -6,6 +6,7 @@ from src.operations.json_toolbox.JsonParser import JsonParser
 from src.operations.json_toolbox.JsonFormatChecker import JsonFormatChecker
 from src.operations.prolog_toolbox.PrologParser import PrologParser
 from src.operations.prolog_toolbox.PrologFormatChecker import PrologFormatChecker
+from src.operations.compile.Compiler import Compiler
 
 
 def check_for_options(options, required_options):
@@ -38,12 +39,12 @@ def cli_execution(operation, options):
             fetch_data(options['url'])
         else:
             raise WrongOption
-    except WrongOption:
-        print('Wrong option!')
+    except WrongOption as wo:
+        print(wo.message)
         sys.exit()
-    except WrongFactFormat:
-        print('Wrong fact format!')
+    except WrongFactFormat as wff:
+        print(wff.message)
         sys.exit()
-    except WrongJsonFormat:
-        print('Wrong JSON file format!')
+    except WrongJsonFormat as wjf:
+        print(wjf.message)
         sys.exit()
