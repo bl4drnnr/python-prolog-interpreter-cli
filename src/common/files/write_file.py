@@ -4,8 +4,6 @@ from src.common.functions import print_text
 
 def write_file(data, output_file, stdscr=None):
     try:
-        if isinstance(data, str):
-            data = data.encode('utf-8')
         with open(os.path.expanduser(output_file), 'w') as f:
             f.write(str(data).replace("'", '"'))
         f.close()
