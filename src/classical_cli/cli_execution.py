@@ -64,7 +64,7 @@ def cli_execution(operation, options):
             check_for_options(options, required_options)
 
             fetcher = Fetch()
-            # data = fetcher.fetch_data()
+            data = fetcher.fetch_data(options.get('url'))
         else:
             raise WrongOption
     except WrongOption as wo:
