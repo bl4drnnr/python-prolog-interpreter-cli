@@ -28,12 +28,12 @@ def cli_execution(operation, options):
             json_format_checker = JsonFormatChecker()
             json_parser = JsonParser()
 
-            file_data = read_file(options['input_file'])
+            file_data = read_file(options.get('input_file'))
 
             json_data = json_format_checker.check_json_format(file_data)
             output_program = json_parser.parse_json(json_data)
 
-            write_file(output_program, options['output_file'])
+            write_file(output_program, options.get('output_file'))
         elif operation == 'write':
             required_options = ['input_file', 'output_file']
             check_for_options(options, required_options)
@@ -41,24 +41,24 @@ def cli_execution(operation, options):
             prolog_format_checker = PrologFormatChecker()
             prolog_parser = PrologParser()
             
-            file_data = read_file(options['input_file'])
+            file_data = read_file(options.get('input_file'))
 
             prolog_data = prolog_format_checker.check_prolog_format(file_data)
             output_program = prolog_parser.parse_prolog(prolog_data)
 
-            write_file({'data': output_program}, options['output_file'])
+            write_file({'data': output_program}, options.get('output_file'))
         elif operation == 'compile':
-            required_options = ['input_file', 'output_file']
+            required_options = ['input_file', 'output_file', 'query']
             check_for_options(options, required_options)
 
-            file_data = read_file(options['input_file'])
+            file_data = read_file(options.get('input_file'))
             json_format_checker = JsonFormatChecker()
             json_parser = JsonParser()
 
             compiler = Compiler(json_parser, json_format_checker)
-            execution_result = compiler.execute_code(file_data)
+            execution_result = compiler.execute_code(file_data, options.get('query'))
 
-            write_file(execution_result, options['output_file'])
+            write_file(execution_result, options.get('output_file'))
         elif operation == 'fetch':
             required_options = ['url']
             check_for_options(options, required_options)

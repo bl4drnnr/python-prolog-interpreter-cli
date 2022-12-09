@@ -65,25 +65,26 @@ class Compiler:
         self._json_format_checker = json_format_checker
         self._current_directory = None
 
-    def execute_code(self, code):
-        if not code.get('query') and not isinstance(code.get('query'), list):
+    def execute_code(self, code_data, query):
+        if (not query and not isinstance(query.split('.'), list)) or not len(query.split('.')):
             raise ExecutionError(message='No set query or query is not list.')
 
+        query = query.split('.')
         self._set_current_directory()
 
         prolog_source_path = f"{self._current_directory}/source_script.pl"
 
-        source_code = code['data']
+        source_code = code_data
         source_code = source_code.replace('\n', '') if isinstance(source_code, str) else source_code
 
         os.chmod(prolog_source_path, 0o700)
 
         if not isinstance(source_code, str):
-            json_data = self._json_format_checker.check_json_format(code)
+            json_data = self._json_format_checker.check_json_format({'data': code_data})
             source_code = self._json_parser.parse_json(json_data)
             source_code = source_code.replace('\n', '')
 
-        code_query = code.get('query')
+        code_query = query
 
         results = {}
         for query in code_query:
