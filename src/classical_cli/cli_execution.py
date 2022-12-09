@@ -2,9 +2,10 @@ import sys
 
 from src.common.exceptions import WrongOption, WrongJsonFormat, WrongFactFormat
 
-from src.operations.json_converter import json_converter
-from src.operations.compile_prolog import compile_and_execute_prolog_program
-from src.operations.fetch_data import fetch_data
+from src.operations.json_toolbox.JsonParser import JsonParser
+from src.operations.json_toolbox.JsonFormatChecker import JsonFormatChecker
+from src.operations.prolog_toolbox.PrologParser import PrologParser
+from src.operations.prolog_toolbox.PrologFormatChecker import PrologFormatChecker
 
 
 def check_for_options(options, required_options):

@@ -29,4 +29,10 @@ class ExecutionError(Error):
 
 
 class SingleArgument(Error):
-    pass
+    def __init__(self, message="One operation argument is expected"):
+        super().__init__(message)
+
+
+class WrongOption(Error):
+    def __init__(self, message="Wrong option!"):
+        super().__init__(message)
