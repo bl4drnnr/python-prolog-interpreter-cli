@@ -1,6 +1,7 @@
+import json
+
 from src.common.exceptions import WrongFactFormat, WrongJsonFormat
 from src.common.variables import JSON_FORMAT_KEYS
-
 
 from src.common.elements import *
 
@@ -57,6 +58,7 @@ class JsonFormatChecker:
         }
 
     def _check_items_format(self, data):
+        data = json.loads(data)
         if not data.get('data'):
             raise WrongJsonFormat(message="There no 'data' body.")
 

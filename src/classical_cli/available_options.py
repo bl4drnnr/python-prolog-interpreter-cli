@@ -21,6 +21,9 @@ def setup_available_options(argv):
     parser.add_argument('-u', '--url',
                         metavar='',
                         help='URL for the resource.')
+    parser.add_argument('-q', '--query',
+                        metavar='',
+                        help='Query, that will be executed.')
 
     json_group.add_argument('-r', '--read',
                             action='store_true',
