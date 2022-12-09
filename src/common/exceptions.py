@@ -1,22 +1,32 @@
 class Error(Exception):
-    pass
-
-
-class SingleArgument(Error):
-    pass
-
-
-class WrongOption(Error):
-    pass
+    def __init__(self, message):
+        self.response = {"data": message}
 
 
 class WrongJsonFormat(Error):
-    pass
+    def __init__(self, message="Wrong JSON format"):
+        super().__init__(message)
 
 
 class WrongFactFormat(Error):
-    pass
+    def __init__(self, message="Wrong fact format"):
+        super().__init__(message)
 
 
 class WrongPrologFormat(Error):
+    def __init__(self, message="Wrong PROLOG format"):
+        super().__init__(message)
+
+
+class WrongConditionFormat(Error):
+    def __init__(self, message="Wrong format of condition"):
+        super().__init__(message)
+
+
+class ExecutionError(Error):
+    def __init__(self, message="Error while executing code"):
+        super().__init__(message)
+
+
+class SingleArgument(Error):
     pass
