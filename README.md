@@ -18,11 +18,8 @@
 
 # Python PROLOG Interpreter CLI
 
-**PPIL** - is a simple `Python` witten library, that will allow you:
-- Use `PROLOG` syntax within your Python code and operate on it.
-- Use `Python` data objects to write `PROLOG` syntax.
-- Read, write and compile `PROLOG` through `Python`. 
-- **And more, more, more...**
+**PPIL** - is a simple `Python` witten library, that will allow you to create API instance and
+convert `JSON` to `Prolog` and `Prolog` to `JSON`.
 
 Application is built from 3 different parts:
 - **Interactive CLI**
@@ -31,8 +28,7 @@ Application is built from 3 different parts:
 
 Documentation and guidelines for every mode will be listed in [Documentation](#documentation) section.
 
-What you see right now, is CLI. In case if you want to use library and use
-Prolog syntax within your Python applications see [this](https://github.com/bl4drnnr/python-prolog-interpreter-lib) repository in order
+What you see right now, is CLI. In case if you want to use library see [this](https://github.com/bl4drnnr/python-prolog-interpreter-lib) repository in order
 to obtain more information.
 
 ---
@@ -217,10 +213,49 @@ If you see help messages, application has been installed correctly.
 
 As it has been written above, CLI is divided on 2 parts - **interactive CLI** and **classical terminal-based application**.
 
+There are 2 ways to execute each type of application. Type `ppil -h` in order to get more
+information about options used for [Classical terminal-based application](#classical-terminal-based-application).
+
+Otherwise, just type `ppil` to execute program as [Interactive CLI](#interactive-cli).
 
 ### Interactive CLI
 
+The main windows of the program. Use arrows on your keyboard for navigation and ENTER key for confirmation.
+
+![1](media/1.png)
+
+In the `Documentation` you will find description of every function available. 
+
+![2](media/2.png)
+
+Right after you press start you will see list of all available function.
+
+![3](media/3.png)
+
 ### Classical terminal-based application
+
+After installation type in terminal `ppil -h` in order to get more information about usage:
+
+```
+usage: main.py [-h] [-i] [-o] [-u] [-q] [-r] [-w] [-f] [-c]
+
+optional arguments:
+  -h, --help           Display this message.
+  -i , --input-file    Path to file to operate on.
+  -o , --output-file   Path and name of output file.
+  -u , --url           URL for the resource.
+  -q , --query         Query, that will be executed.
+
+Read and write JSON file:
+  -r, --read           Convert your JSON data into Prolog program.
+  -w, --write          Convert your Prolog program into JSON data.
+
+Web:
+  -f, --fetch          Fetch data from the web. Format is auto detected.
+
+Common actions:
+  -c, --compile        Compile and execute Prolog program.
+```
 
 ---
 
